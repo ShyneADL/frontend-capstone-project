@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Restaurant Table Booking</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="form.css">
-    </head>
-    <body style="background-image: url(bg.png); background-repeat: no-repeat; background-position: center; background-size: cover;">
+// Import the functions or modules responsible for form handling and validation
+import { validateForm } from '../../form.js'; // Replace with actual imports
 
-        <div class="flex justify-center items-center w-full" >
-            <div class="flex flex-col justify-center items-center">
-
-                <h1 class="text-white text-[44px] font-bold ">Table Booking</h1>
-                <p class="text-[rgba(255,255,255,0.8)] text-[28px] font-[600]">Please fill out the form to reserve a table at our restaurant.</p>
-
-                <form id="order" method="POST" class="flex flex-col items-start justify-center bg-white p-6 m-4">
+// Mock the form element and its elements
+document.body.innerHTML = `
+<form id="order" method="POST" class="flex flex-col items-start justify-center bg-white p-6 m-4">
                     
                     <div class="flex flex-col items-start">
                         <label for="name">Name:</label>
@@ -62,9 +50,21 @@
                         <button type="submit" class="py-2 px-4 bg-[#F4B400] rounded-3xl mt-8">Submit Reservation</button>
                     </div>
                 </form>
-            </div>
-        </div>
+`;
 
 
-    </body>
-</html>
+describe('Form Validation', () => {
+    test('validateForm should return true for valid inputs', () => {
+        document.getElementById('name').value = 'John Doe';
+        document.getElementById('email').value = 'johndoe@example.com';
+
+        expect(validateForm()).toBe(true);
+    });
+
+    test('validateForm should return false for invalid inputs', () => {
+        document.getElementById('name').value = ''; // Empty name field
+        document.getElementById('email').value = 'invalid-email'; // Invalid email format
+
+        expect(validateForm()).toBe(false);
+    });
+});

@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden ;
+}
+
+body {
+    background-image: url(bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+label {
+    font-size: 22px;
+    font-weight: 500;
+    color: black;
+}
+
+input {
+    margin-bottom: 8px;
+}
+
+input:last-child {
+    margin-bottom: 0px;
+}
+
